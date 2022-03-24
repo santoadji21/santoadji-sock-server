@@ -2,11 +2,10 @@ const app = require("express")();
 const http = require("http").createServer(app);
 const io = require("socket.io")(http);
 const cors = require("cors");
-const PORT = 3000;
+const PORT = process.env.PORT || 5000;
 const { addUser, getUser, deleteUser, getUsers } = require("./users");
 
 app.use(cors());
-
 
 io.on("connection", (socket) => {
   socket.on("login", ({ name, room }, callback) => {
@@ -46,5 +45,5 @@ app.get("/", (req, res) => {
 });
 
 http.listen(PORT, () => {
-  console.log(`SERVER RUNNING on PORT : 3000`);
+  console.log(`Listening to ${PORT}`);
 });
