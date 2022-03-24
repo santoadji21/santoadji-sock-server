@@ -1,6 +1,6 @@
 const app = require("express")();
-const https = require("https").createServer(app);
-const io = require("socket.io")(https);
+const http = require("http").createServer(app);
+const io = require("socket.io")(http);
 const cors = require("cors");
 const PORT = 5000;
 const { addUser, getUser, deleteUser, getUsers } = require("./users");
